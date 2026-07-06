@@ -178,7 +178,7 @@ class TwoAgentConversation:
             prediction = chatbot(
                 instruct_prompt=self._agent_prompt(speaker),
                 scenario_context=self._context(),
-                prompt_tools=prompt_tools,
+                prompt_tool=prompt_tool,
                 user_input=next_message,
             )
             next_message = _prediction_label(prediction)
