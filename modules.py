@@ -124,7 +124,7 @@ class PromptTool:
 class InstructedChatbot(dspy.Module):
     """A ReAct D&D player agent with classifier-assisted behaviour instructions."""
 
-    def __init__(self):
+    def __init__(self, prompt_tools=PromptTool | None=None, max_iters=6):
         super().__init__()
         self.prompt_tools = PromptTool()
         self.react = dspy.ReAct(
