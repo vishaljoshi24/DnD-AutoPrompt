@@ -138,6 +138,7 @@ class InstructedChatbot(dspy.Module):
         )
 
     def forward(self, instruct_prompt: str, scenario_context: str, user_input: str):
+        """Process another agent's input with prompt aware reasoning"""
         return self.react(
             instruct_prompt=_as_text(instruct_prompt),
             scenario_context=_as_text(scenario_context),
@@ -154,7 +155,7 @@ class AgentProfile:
 
 @dataclass
 class TwoAgentConversation:
-    """Run two InstructedChatbot agents against each other."""
+    """Run two Instructed agents against each other."""
 
     agent_a: AgentProfile
     agent_b: AgentProfile
@@ -177,6 +178,7 @@ class TwoAgentConversation:
             prediction = chatbot(
                 instruct_prompt=self._agent_prompt(speaker),
                 scenario_context=self._context(),
+                prompt_tools=prompt_tools,
                 user_input=next_message,
             )
             next_message = _prediction_label(prediction)
