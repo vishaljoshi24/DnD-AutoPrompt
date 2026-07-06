@@ -95,7 +95,6 @@ class PromptTool:
         prompt_class: str,
         context: str,
         query: str,
-        prompts,
         user_id: str = "default_user",
         limit: int = 4,
     ) -> str:
