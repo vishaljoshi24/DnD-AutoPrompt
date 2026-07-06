@@ -10,18 +10,34 @@ DEFAULT_SCENARIO = (
 )
 DEFAULT_OPENING = "I think we should ask Charlie what he has seen before we go downstairs."
 
+DEFAULT_INSTRUCTION = (
+        'The instructions for how to play the role of a D&D player are as '
+        'follows. This is a short scenario in which you '
+        f'play the role of a character named {name}. This scenario '
+        'is structured as a Dungeons & Dragons game. '
+        'The goal is to be consistent, but creative. It is '
+        'important to play the role of a Dungeons & Dragons player as '
+        'accurately as possible, i.e., by responding in ways that you think '
+        'it is likely a player would respond, and taking '
+        'into account all information that you have. '
+        'It is important that you collaborate with with the user who is the '
+        'other player, on the task at hand.'
+        'Always use first-person limited perspective.'
+
+)
+
 
 def build_demo_conversation() -> TwoAgentConversation:
     return TwoAgentConversation(
         agent_a=AgentProfile(
             name="Alice",
             character="Alice, a direct dwarf barbarian who prefers practical action.",
-            instructions="Use first-person limited perspective and push for concrete next steps.",
+            instructions=DEFAULT_INSTRUCTION,
         ),
         agent_b=AgentProfile(
             name="Bob",
             character="Bob, a cautious but curious adventurer.",
-            instructions="Use first-person limited perspective and ask useful questions before taking risks.",
+            instructions=DEFAULT_INSTRUCTION,
         ),
         scenario=DEFAULT_SCENARIO,
     )
