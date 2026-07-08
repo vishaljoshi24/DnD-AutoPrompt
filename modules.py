@@ -100,11 +100,11 @@ class PromptTool:
     ) -> str:
         """Find the instruction text for a classified player behaviour."""
         prompt_text = "Update instructions with the following prompt:\n"
-        for i in range(len(prompts)):
-            if prompt_class == prompts[i]['classes']:
-                prompt_text += prompts[i]['instructions']
+        for i in range(len(self.prompts)):
+            if prompt_class == self.prompts[i]['classes']:
+                prompt_text += self.prompts[i]['instructions']
                 return prompt_text
-            if not instruction:
+            if not prompt_class:
                 return "No relevant prompt found."
 
     def update_prompt(
