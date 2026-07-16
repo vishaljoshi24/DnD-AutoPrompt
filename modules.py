@@ -20,7 +20,7 @@ def configure_lm(
     model: str = DEFAULT_MODEL,
     api_base: str = DEFAULT_API_BASE,
     api_key: str = "",
-    max_tokens: int = 2048,
+    max_tokens: int = 4096,
 ) -> dspy.LM:
     """Configure DSPy for the local Ollama-backed model used in the notebooks."""
 
