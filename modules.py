@@ -161,6 +161,7 @@ class TwoAgentConversation:
     agent_a: AgentProfile
     agent_b: AgentProfile
     scenario: str
+    task: str
     chatbot_a: InstructedChatbot = field(default_factory=InstructedChatbot)
     chatbot_b: InstructedChatbot = field(default_factory=InstructedChatbot)
     history: list[str] = field(default_factory=list)
@@ -180,6 +181,7 @@ class TwoAgentConversation:
                 instruct_prompt=self._agent_prompt(speaker),
                 scenario_context=self._context(),
                 user_input=next_message,
+                task = task,
             )
             next_message = _prediction_label(prediction)
             self.history.append(f"{speaker.name}: {next_message}")
