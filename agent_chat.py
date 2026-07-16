@@ -8,6 +8,11 @@ DEFAULT_SCENARIO = (
     "Charlie owns Wizard Tower Brewing Company and needs help with a rat infestation "
     "in the brewery basement. Alice and Bob are adventurers deciding how to proceed."
 )
+
+DEFAULT_TASK = (
+    "You should discuss a strategy for clearing out the rat infestation"
+)
+    
 DEFAULT_OPENING = "I think we should ask Charlie what he has seen before we go downstairs."
 
 DEFAULT_INSTRUCTION = (
@@ -40,6 +45,7 @@ def build_demo_conversation() -> TwoAgentConversation:
             instructions=DEFAULT_INSTRUCTION,
         ),
         scenario=DEFAULT_SCENARIO,
+        task=DEFAULT_TASK
     )
 
 
