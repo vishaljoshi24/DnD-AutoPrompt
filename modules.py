@@ -152,6 +152,8 @@ class AgentProfile:
     name: str
     character: str
     instructions: str
+    inventory: list[str]
+    spells: list[str]
 
 
 @dataclass
