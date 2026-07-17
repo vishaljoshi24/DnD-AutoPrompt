@@ -38,11 +38,26 @@ def build_demo_conversation() -> TwoAgentConversation:
             name="Alice",
             character="Alice, a direct dwarf barbarian who prefers practical action.",
             instructions=DEFAULT_INSTRUCTION,
+            inventory = [
+                "One set of common clothes"",
+                "Two daggers",
+                "One axe",
+                "50 feet of rope",
+                "One tinderbox",
+                "One torch",
+            ],
         ),
         agent_b=AgentProfile(
             name="Bob",
-            character="Bob, a cautious but curious adventurer.",
+            character="Bob, a cautious but curious wizard.",
             instructions=DEFAULT_INSTRUCTION,
+            inventory = [
+                "One Wizard's Staff",
+                "One can of oil",
+                "One tinderbox",
+                "Thunderwave spell: You unleash a wave of thunderous energy.",
+                "Command spell: You speak a one-word command to a creature you can see within range."
+            ],
         ),
         scenario=DEFAULT_SCENARIO,
         task=DEFAULT_TASK
