@@ -152,7 +152,7 @@ class AgentProfile:
     name: str
     character: str
     instructions: str
-    inventory: dict[str|str]
+    inventory: list[str]
     abilities: dict[str|str]
     skills: dict[str|str]
 
