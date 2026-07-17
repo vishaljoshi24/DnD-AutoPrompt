@@ -152,8 +152,9 @@ class AgentProfile:
     name: str
     character: str
     instructions: str
-    inventory: list[str]
-    spells: list[str]
+    inventory: dict[str|str]
+    abilities: dict[str|str]
+    skills: dict[str|str]
 
 
 @dataclass
