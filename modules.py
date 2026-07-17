@@ -207,40 +207,57 @@ class TwoAgentConversation:
         )
 
 
-class ScorePrompt(dspy.Module):
-    def __init__(self):
-        super().__init__()
-        self.assessment = dspy.ChainOfThought(Assess, caching=False)
+@dataclass
+class MultiAgentConversation:
+    """Run two Instructed agents against each other."""
 
-    def forward(self, prompt_list: list[str], **kwargs: Any) -> list[float]:
-        score_list = []
-        for prompt in prompt_list:
-            scores = [
-                self.assessment(
-                    assessed_text=[prompt],
-                    assessment_question="Is the assessed prompt specific, unambiguous and easy to interpret?",
-                ).assessment_answer,
-                self.assessment(
-                    assessed_text=[prompt],
-                    assessment_question=(
-                        "Does the prompt align with the categorised quality of D&D "
-                        "player behaviour that it is trying to express?"
-                    ),
-                ).assessment_answer,
-                self.assessment(
-                    assessed_text=[prompt],
-                    assessment_question=(
-                        "Is the assessed prompt correct with respect to the player "
-                        "quality that it is describing?"
-                    ),
-                ).assessment_answer,
-                self.assessment(
-                    assessed_text=[prompt],
-                    assessment_question=(
-                        "Does the prompt fully express the quality of the player's "
-                        "behaviour, including implied context or secondary queries?"
-                    ),
-                ).assessment_answer,
-            ]
-            score_list.append(sum(1 for score in scores if score) / len(scores))
-        return score_list
+    agent_a: AgentProfile
+    agent_b: AgentProfile
+    agent_c: AgentProfile
+    scenario: str
+    task: str
+    chatbot_a: InstructedChatbot = field(default_factory=InstructedChatbot)
+    chatbot_b: InstructedChatbot = field(default_factory=InstructedChatbot)
+    chatbot_c: InstructedChatbot = field(default_factory=InstructedChatbot)
+    history: list[str] = field(default_factory=list)
+
+    def run(self, opening_message: str, rounds: int = 4) -> list[str]:
+        self.history.append(f"{self.agent_c.name}: {opening_message}")
+        next_message = opening_message
+
+        for turn_index in range(rounds):
+            speaker, chatbot = (
+                (self.agent_a, self.chatbot_a)
+                if turn_index % 3 == 0
+                elif (self.agent_b, self.chatbot_b)
+                else (self.agent_c, self.chatbot_c)
+            )
+
+            prediction = chatbot(
+                instruct_prompt=self._agent_prompt(speaker),
+                scenario_context=self._context(),
+                user_input=next_message,
+                task = self._task(),
+            )
+            next_message = _prediction_label(prediction)
+            self.history.append(f"{speaker.name}: {next_message}")
+
+        return self.history
+
+    def _context(self) -> str:
+        recent_history = "\n".join(self.history[-3:])
+        return f"{self.scenario}\n\nRecent turns:\n{recent_history}"
+
+    def _task(self) -> str:
+        return f"{self.task}"
+
+    def _agent_prompt(self, profile: AgentProfile) -> str:
+        return (
+            "You are playing a Dungeons & Dragons scene.\n"
+            f"Character: {profile.character}\n"
+            f"{profile.instructions}\n"
+            f"{profile.inventory}\n"
+            "Stay in character and reply with only the next spoken turn."
+        )
+
+
