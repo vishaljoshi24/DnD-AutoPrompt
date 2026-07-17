@@ -223,11 +223,13 @@ class MultiAgentConversation:
         next_message = opening_message
 
         for turn_index in range(rounds):
-            speaker, chatbot = (
+            if turn_index % 3 == 0:
+                speaker, chatbot = (
                 (self.agent_a, self.chatbot_a)
-                if turn_index % 3 == 0
-                else (self.agent_b, self.chatbot_b)
-                else (self.agent_c, self.chatbot_c)
+            elif:
+                speaker, chatbot = (self.agent_b, self.chatbot_b)
+            else:     
+                speaker, chatbot = (self.agent_c, self.chatbot_c)
             )
 
             prediction = chatbot(
