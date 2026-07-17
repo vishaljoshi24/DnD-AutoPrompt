@@ -226,7 +226,7 @@ class MultiAgentConversation:
             speaker, chatbot = (
                 (self.agent_a, self.chatbot_a)
                 if turn_index % 3 == 0
-                elif (self.agent_b, self.chatbot_b)
+                else (self.agent_b, self.chatbot_b)
                 else (self.agent_c, self.chatbot_c)
             )
 
