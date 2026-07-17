@@ -137,13 +137,12 @@ class InstructedChatbot(dspy.Module):
             max_iters=max_iters,
         )
 
-    def forward(self, instruct_prompt: str, scenario_context: str, user_input: str, task: str):
+    def forward(self, instruct_prompt: str, scenario_context: str, user_input: str):
         """Process another agent's input with prompt aware reasoning"""
         return self.react(
             instruct_prompt=_as_text(instruct_prompt),
             scenario_context=_as_text(scenario_context),
             user_input=user_input,
-            task=task,
         )
 
 
@@ -164,7 +163,6 @@ class TwoAgentConversation:
     agent_a: AgentProfile
     agent_b: AgentProfile
     scenario: str
-    task: str
     chatbot_a: InstructedChatbot = field(default_factory=InstructedChatbot)
     chatbot_b: InstructedChatbot = field(default_factory=InstructedChatbot)
     history: list[str] = field(default_factory=list)
@@ -215,7 +213,6 @@ class MultiAgentConversation:
     agent_b: AgentProfile
     agent_c: AgentProfile
     scenario: str
-    task: str
     chatbot_a: InstructedChatbot = field(default_factory=InstructedChatbot)
     chatbot_b: InstructedChatbot = field(default_factory=InstructedChatbot)
     chatbot_c: InstructedChatbot = field(default_factory=InstructedChatbot)
