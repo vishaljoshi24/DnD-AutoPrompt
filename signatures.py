@@ -34,7 +34,6 @@ class ChatbotSignature(dspy.Signature):
     instruct_prompt: str = dspy.InputField()
     scenario_context: str = dspy.InputField()
     user_input: str = dspy.InputField()
-    task: str = dspy.InputField()
     response: str = dspy.OutputField()
 
 
