@@ -182,7 +182,6 @@ class TwoAgentConversation:
                 instruct_prompt=self._agent_prompt(speaker),
                 scenario_context=self._context(),
                 user_input=next_message,
-                task = self._task(),
             )
             next_message = _prediction_label(prediction)
             self.history.append(f"{speaker.name}: {next_message}")
@@ -192,9 +191,6 @@ class TwoAgentConversation:
     def _context(self) -> str:
         recent_history = "\n".join(self.history[-3:])
         return f"{self.scenario}\n\nRecent turns:\n{recent_history}"
-
-    def _task(self) -> str:
-        return f"{self.task}"
 
     def _agent_prompt(self, profile: AgentProfile) -> str:
         return (
@@ -234,7 +230,6 @@ class MultiAgentConversation:
                 instruct_prompt=self._agent_prompt(speaker),
                 scenario_context=self._context(),
                 user_input=next_message,
-                task = self._task(),
             )
             next_message = _prediction_label(prediction)
             self.history.append(f"{speaker.name}: {next_message}")
@@ -244,9 +239,6 @@ class MultiAgentConversation:
     def _context(self) -> str:
         recent_history = "\n".join(self.history[-3:])
         return f"{self.scenario}\n\nRecent turns:\n{recent_history}"
-
-    def _task(self) -> str:
-        return f"{self.task}"
 
     def _agent_prompt(self, profile: AgentProfile) -> str:
         return (
