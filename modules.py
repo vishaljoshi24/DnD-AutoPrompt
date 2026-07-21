@@ -221,8 +221,8 @@ class MultiAgentConversation:
         for turn_index in range(rounds):
             if turn_index % 3 == 0:
                 speaker, chatbot = (self.agent_a, self.chatbot_a)
-            elif turn_index % 3 > 0:
-                speaker, chatbot = (self.agent_b, self.chatbot_b)
+            elif 0 < turn_index < 3:
+                speaker, chatbot = (self.agent_b, self.chatbot_b) or (self.agent_a, self.chatbot_a)
             else:     
                 speaker, chatbot = (self.agent_c, self.chatbot_c)
 
