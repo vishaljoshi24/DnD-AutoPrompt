@@ -244,8 +244,8 @@ class MultiAgentConversation:
         return (
             "You are playing a Dungeons & Dragons scene.\n"
             f"Character: {profile.character}\n"
-            f"{profile.instructions}\n"
-            f"{profile.inventory}\n"
+            f"Instructions: {profile.instructions}\n"
+            f"Inventory: {profile.inventory}\n"
             "Stay in character and reply with only the next spoken turn."
         )
 
