@@ -214,6 +214,53 @@ class TwoAgentConversation:
             "Stay in character and reply with only the next spoken turn."
         )
 
+class BaselineConversation:
+    """Run two Instructed agents against each other."""
+
+    agent_a: AgentProfile
+    agent_b: AgentProfile
+    agent_c: AgentProfile
+    scenario: str
+    chatbot_a: BaselineChatbot = field(default_factory=BaselineChatbot)
+    chatbot_b: BaselineChatbot = field(default_factory=BaselineChatbot)
+    chatbot_c: BaselineChatbot = field(default_factory=BaselineChatbot)
+    history: list[str] = field(default_factory=list)
+
+    def run(self, opening_message: str, rounds: int = 4) -> list[str]:
+        self.history.append(f"{self.agent_c.name}: {opening_message}")
+        next_message = opening_message
+
+        for turn_index in range(rounds):
+            if turn_index % 3 == 0:
+                speaker, chatbot = (self.agent_a, self.chatbot_a)
+            elif turn_index % 3 == 1: 
+                speaker, chatbot = (self.agent_b, self.chatbot_b)
+            else:     
+                speaker, chatbot = (self.agent_c, self.chatbot_c)
+
+            prediction = chatbot(
+                instruct_prompt=self._agent_prompt(speaker),
+                scenario_context=self._context(),
+                user_input=next_message,
+            )
+            next_message = _prediction_label(prediction)
+            self.history.append(f"{speaker.name}: {next_message}")
+
+        return self.history
+
+    def _context(self) -> str:
+        recent_history = "\n".join(self.history[-3:])
+        return f"{self.scenario}\n\nRecent turns:\n{recent_history}"
+
+    def _agent_prompt(self, profile: AgentProfile) -> str:
+        return (
+            "You are playing a Dungeons & Dragons scene.\n"
+            f"Character: {profile.character}\n"
+            f"Instructions: {profile.instructions}\n"
+            f"Inventory: {profile.inventory}\n"
+            "Stay in character and reply with only the next spoken turn."
+        )
+
 
 @dataclass
 class MultiAgentConversation:
