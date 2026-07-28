@@ -214,6 +214,7 @@ class TwoAgentConversation:
             "Stay in character and reply with only the next spoken turn."
         )
 
+@dataclass
 class BaselineConversation:
     """Run two Instructed agents against each other."""
 
