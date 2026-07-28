@@ -120,6 +120,20 @@ class PromptTool:
         updated_prompt = instruct_prompt + new_prompt
         return f"Updated prompt with new instructions: {updated_prompt}"
 
+class BaselineChatbot(dspy.Module):
+    """A CoT D&D player agent with basline behaviour instructions."""
+
+    def __init__(self):
+        super().__init__()
+            self.baseline_agent = dspy.ChainOfThought(signature=ChatbotSignature)
+
+    def forward(self, instruct_prompt: str, scenario_context: str, user_input: str):
+        """Process another agent's input with prompt aware reasoning"""
+        return self.baseline_agent(
+            instruct_prompt=_as_text(instruct_prompt),
+            scenario_context=_as_text(scenario_context),
+            user_input=user_input,
+        )
 
 class InstructedChatbot(dspy.Module):
     """A ReAct D&D player agent with classifier-assisted behaviour instructions."""
