@@ -125,7 +125,7 @@ class BaselineChatbot(dspy.Module):
 
     def __init__(self):
         super().__init__()
-            self.baseline_agent = dspy.ChainOfThought(signature=ChatbotSignature)
+        self.baseline_agent = dspy.ChainOfThought(signature=ChatbotSignature)
 
     def forward(self, instruct_prompt: str, scenario_context: str, user_input: str):
         """Process another agent's input with prompt aware reasoning"""
