@@ -1,0 +1,125 @@
+{
+  "classifier.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": "Dialogue context: WILL: He was Scottish, but fancy Scottish. LIAM: He's glam rock. Glam rock. ORION: Oh, right, right. What's all this noise out here? What are you bothering my friends for? Guards!",
+        "question": "MATT: The guards look over confused and, \"We heard there was a--\"",
+        "reasoning": "MATT's statement describes the guards' reaction and their confusion, which is part of the narrative progression of the scene. This is a continuation of the story being enacted by the DM, detailing how the guards respond to the group's presence and the previous commotion.",
+        "response": "enact narration"
+      },
+      {
+        "augmented": true,
+        "context": "Dialogue context: LIAM: He's glam rock. Glam rock. ORION: Oh, right, right. What's all this noise out here? What are you bothering my friends for? Guards! MATT: The guards look over confused and, \"We heard there was a--\"",
+        "question": "ORION: Everything's fine. These are friends. Get on with your business. Get back on patrol. Make sure nothing happens or I'll have your heads.",
+        "reasoning": "ORION's statement is a directive to the guards, which is part of the narrative progression. The DM (MATT) would respond by narrating the guards' reaction to this command, advancing the scene's interaction.",
+        "response": "enact narration"
+      },
+      {
+        "augmented": true,
+        "context": "Dialogue context: MATT: The guards look over confused and, \"We heard there was a--\" ORION: Everything's fine. These are friends. Get on with your business. Get back on patrol. Make sure nothing happens or I'll have your heads. MATT: Make a deception check.",
+        "question": "MARISHA: Oh, come on, Tiberius.",
+        "reasoning": "MARISHA's interjection appears to be a narrative reaction to the unfolding scenario, contributing to the story's tone or character dynamics without introducing new gameplay elements or requests. It aligns with the DM's prior narration, maintaining the narrative flow.",
+        "response": "enact narration"
+      },
+      {
+        "augmented": true,
+        "context": "Dialogue context: MATT: Make a deception check. MARISHA: Oh, come on, Tiberius. ORION: 28.",
+        "question": "MATT: The guards look at each other. \"All right, but if anything happens again, there's a problem, let us know. We'll be at the ready.\" They sheathe their weapons and look untrustingly to the rest of your group with your weapons currently drawn and step back--",
+        "reasoning": "MATT's response describes the guards' reaction to the deception check, continuing the narrative of the scene. This is part of the DM's storytelling to advance the scenario, not a question, knowledge exchange, or player action.",
+        "response": "enact narration"
+      },
+      {
+        "context": "Dialogue context: ORION: As he's doing that, I'm going to drink a potion of frost giant strength. MATT: Okay. You slam your foot into the door. Oh, that was the foot that you just got healed. Oh, that's going to bruise. That's really going to bruise. LIAM: Keyleth-- Coralin, darling, could you come up here please?",
+        "question": "MARISHA: Yes? Did you stub your toe, darling?",
+        "response": "knowledge request"
+      },
+      {
+        "context": "Dialogue context: LIAM: Yeah. I think I want to get this door open quickly, please. WIL: I'm going to hit the door with my axe. MATT: Okay. Go for it and roll. What did you roll?",
+        "question": "LIAM: A one!",
+        "response": "deterministic action"
+      },
+      {
+        "context": "Dialogue context: LIAM: Wait, that's the wrong guy. 12. 14. ORION: As he's doing that, I'm going to drink a potion of frost giant strength. MATT: Okay. You slam your foot into the door. Oh, that was the foot that you just got healed. Oh, that's going to bruise. That's really going to bruise.",
+        "question": "LIAM: Keyleth-- Coralin, darling, could you come up here please?",
+        "response": "enact narration"
+      },
+      {
+        "context": "Dialogue context: MATT: Okay. Listen to it. Perception roll. LIAM: So many. Six. MATT: Seems fairly quiet.",
+        "question": "ORION: If we've stopped pursuing, does that take us out of initiative?",
+        "response": "knowledge request"
+      },
+      {
+        "context": "Dialogue context: MATT: I would say with a natural 20, yes. The doors both also seem to be functional doors, not designed with any sort of trap attached. LIAM: All right. Pressing my ear to the door on my left. MATT: Okay. Listen to it. Perception roll.",
+        "question": "LIAM: So many. Six.",
+        "response": "deterministic action"
+      },
+      {
+        "context": "Dialogue context: LIAM: Kick in the door. Hard as I can. MATT: Okay. Make a strength roll. This would be straight strength. LIAM: Wait, that's the wrong guy. 12. 14.",
+        "question": "ORION: As he's doing that, I'm going to drink a potion of frost giant strength.",
+        "response": "resource use"
+      },
+      {
+        "context": "Dialogue context: LIAM: Would that check include the doors themselves? MATT: I would say with a natural 20, yes. The doors both also seem to be functional doors, not designed with any sort of trap attached. LIAM: All right. Pressing my ear to the door on my left.",
+        "question": "MATT: Okay. Listen to it. Perception roll.",
+        "response": "deterministic action"
+      },
+      {
+        "context": "Dialogue context: LIAM: A one! MARISHA: No way! It's a lie. If it wasn't live, no one would believe it. WIL: I rolled a one. Because it is what I do.",
+        "question": "MATT: I'm going to test this theory. I'm going to trade you, for now, and I'm going to leave you with that dice and see if it has any impact whatsoever.",
+        "response": "out of gameplay"
+      },
+      {
+        "context": "Dialogue context: WIL: I rolled a one. Because it is what I do. MATT: I'm going to test this theory. I'm going to trade you, for now, and I'm going to leave you with that dice and see if it has any impact whatsoever. LIAM: You have to throw it into the fire, Mr. Frodo!",
+        "question": "WIL: The curse doesn't care about which die is rolled.",
+        "response": "out of gameplay"
+      },
+      {
+        "context": "Dialogue context: MATT: The guards look at each other. \"All right, but if anything happens again, there's a problem, let us know. We'll be at the ready.\" They sheathe their weapons and look untrustingly to the rest of your group with your weapons currently drawn and step back-- ORION: Go on, get out. MATT: They disappear back into the main room and they start calming down some of the other patrons who are starting to peek around them, trying to see what's going on, the action. Some look smiling and curious to see what's happening, and they're, \"Go back to your tables. It's fine; there's no problem.\" And they disperse the energy.",
+        "question": "LIAM: Not bad, Tiberius.",
+        "response": "knowledge share"
+      },
+      {
+        "context": "Dialogue context: ORION: Go on, get out. MATT: They disappear back into the main room and they start calming down some of the other patrons who are starting to peek around them, trying to see what's going on, the action. Some look smiling and curious to see what's happening, and they're, \"Go back to your tables. It's fine; there's no problem.\" And they disperse the energy. LIAM: Not bad, Tiberius.",
+        "question": "MARISHA: With that, I continue with the charade and loop my arm around Vax and say, shall we go into that room?",
+        "response": "enact narration"
+      },
+      {
+        "context": "Dialogue context: MATT: 19? Listening, you hear what sounds like a slight (creak) sound, some sort of a scooting of wood on wood, and then silence. LIAM: Kick in the door. Hard as I can. MATT: Okay. Make a strength roll. This would be straight strength.",
+        "question": "LIAM: Wait, that's the wrong guy. 12. 14.",
+        "response": "deterministic action"
+      }
+    ],
+    "signature": {
+      "instructions": "Given the context for a Dungeons & Dragons game turn and the game turn itself, classify the turn.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "The three previous game turns which describe a player's action or their dialogue."
+        },
+        {
+          "prefix": "Question:",
+          "description": "The current turn taken by a player, which can include a description of an action or a piece of dialogue."
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Response:",
+          "description": "${response}"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.13",
+      "dspy": "3.2.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}
